@@ -21,9 +21,6 @@ const NavIcons = () => {
   return (
     <div className="flex flex-row-reverse gap-4">
       <div className="relative">
-        <h1 className="absolute -top-3 -right-2 ring-1 rounded-full text-center w-5 h-5 text-sm bg-red-400 text-white">
-          2
-        </h1>
         <ShoppingCart onClick={handleCart} />
         {cartActive ? (
           <div className="absolute top-10 right-4">
