@@ -3,12 +3,18 @@ import React, { ChangeEvent, useState } from "react";
 import { useShoppingCart } from "use-shopping-cart";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-
+interface BillingInfo {
+  name: string;
+  email: string;
+  address: string;
+  city: string;
+  zip: string;
+}
 const CheckoutPage = () => {
   const { cartCount, cartDetails, totalPrice } = useShoppingCart();
   const router = useRouter();
 
-  const [billingInfo, setBillingInfo] = useState<any>({
+  const [billingInfo, setBillingInfo] = useState<BillingInfo>({
     name: "",
     email: "",
     address: "",
@@ -53,7 +59,7 @@ const CheckoutPage = () => {
                   type={field === "email" ? "email" : "text"}
                   name={field}
                   id={field}
-                  value={billingInfo[field]}
+                  value={billingInfo[field as keyof BillingInfo]}
                   onChange={handleInputChange}
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
                   placeholder={`Enter your ${field}`}
