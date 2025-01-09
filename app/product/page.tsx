@@ -1,11 +1,11 @@
 "use client";
-import Products from "@/components/FProducts";
+import Productsection from "@/components/Products";
 import React from "react";
 
 const page = () => {
   return (
     <div>
-      <Products />
+      <Productsection />
     </div>
   );
 };

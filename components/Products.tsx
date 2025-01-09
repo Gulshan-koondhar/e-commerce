@@ -21,7 +21,7 @@ const Productsection = async ({ limit }: { limit?: number }) => {
         {products.length > 0 ? (
           products.map((product) => (
             <Link
-              href={`/products/${product.id}`}
+              href={`/product/${product.id}`}
               key={product.id}
               className="ring-2 ring-gray-300 shadow-xl rounded-lg p-2"
             >
@@ -34,15 +34,10 @@ const Productsection = async ({ limit }: { limit?: number }) => {
                   className="w-[300px] h-[200px] object-contain"
                 />
                 <div>
-                  <h1 className="text-lg font-semibold my-2 ">
+                  <h1 className="text-lg font-semibold mt-4 line-clamp-1 ">
                     {product.title}
                   </h1>
                   <p className="font-medium text-lg">{`$ ${product.price}`}</p>
-                </div>
-                <div className="relative">
-                  <button className="bg-black text-white py-2 px-3 rounded absolute -top-10 right-0">
-                    Add to Cart
-                  </button>
                 </div>
               </div>
             </Link>

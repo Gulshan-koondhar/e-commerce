@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-async-client-component */
 
-import { ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -16,10 +15,6 @@ const Products = async ({ limit }: { limit?: number }) => {
   const res = await fetch(`https://fakestoreapi.com/products?limit=${limit}`);
   const products: IProducts[] = await res.json();
 
-  const truncateName = (name: string, length: number) => {
-    return name.length > length ? `${name.slice(0, length)}...` : name;
-  };
-
   return (
     <div className="max-w-screen-xl mx-auto p-4">
       <h1 className="font-bold text-2xl mb-4">Featured Products</h1>
@@ -27,7 +22,7 @@ const Products = async ({ limit }: { limit?: number }) => {
         {products.length > 0 ? (
           products.map((product) => (
             <Link
-              href={`/products/${product.id}`}
+              href={`/product/${product.id}`}
               key={product.id}
               className="ring-2 ring-gray-300 shadow-xl rounded-lg p-2"
             >
@@ -40,15 +35,10 @@ const Products = async ({ limit }: { limit?: number }) => {
                   className="w-[300px] h-[200px] object-contain"
                 />
                 <div>
-                  <h1 className="text-lg font-semibold my-2 ">
-                    {truncateName(product.title, 25)}
+                  <h1 className="text-lg font-semibold mt-4 line-clamp-1 ">
+                    {product.title}
                   </h1>
                   <p className="font-medium text-lg">{`$ ${product.price}`}</p>
-                </div>
-                <div className="relative">
-                  <button className="bg-black text-white py-2 px-3 rounded absolute -top-10 right-0">
-                    <ShoppingCart />
-                  </button>
                 </div>
               </div>
             </Link>

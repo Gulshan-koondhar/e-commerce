@@ -1,3 +1,4 @@
+import BuyNow from "@/components/BuyNow";
 import Image from "next/image";
 
 interface IParams {
@@ -28,7 +29,7 @@ const ProductDetails = async ({ params }: IParams) => {
         </div>
         <div className="flex flex-col gap-8 sm:w-2/3 w-full">
           <div>
-            <h1 className="text-3xl font-bold">{product?.name}</h1>
+            <h1 className="text-3xl font-bold">{product?.title}</h1>
             <p className="text-orange-500 text-xl">{product.description}</p>
           </div>
           <div className="bg-slate-300 h-[2px]" />
@@ -39,9 +40,14 @@ const ProductDetails = async ({ params }: IParams) => {
             <span>1</span>
             <span>+</span>
           </div>
-          <button className="bg-green-700 w-max px-4 py-2 rounded-md">
-            Buy Now
-          </button>
+          <BuyNow
+            id={product?.id}
+            image={product?.image}
+            title={product?.title}
+            price={product?.price}
+            key={product?.id}
+            currency="USD"
+          />
         </div>
       </div>
     </div>

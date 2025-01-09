@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
+
+import { useEffect, useState } from "react";
 import image from "@/assests/images/pexels-photo-1021693.jpeg";
 
 const slides = [
@@ -11,7 +11,7 @@ const slides = [
     title: "Summer Sale Collections",
     description: "Sale! Up to 50% off!",
     img: image,
-    url: "/",
+    url: "/product",
     bg: "bg-gradient-to-r from-yellow-50 to-pink-50",
   },
   {
@@ -19,7 +19,7 @@ const slides = [
     title: "Winter Sale Collections",
     description: "Sale! Up to 50% off!",
     img: image,
-    url: "/",
+    url: "/product",
     bg: "bg-gradient-to-r from-pink-50 to-blue-50",
   },
   {
@@ -27,7 +27,7 @@ const slides = [
     title: "Spring Sale Collections",
     description: "Sale! Up to 50% off!",
     img: image,
-    url: "/",
+    url: "/product",
     bg: "bg-gradient-to-r from-blue-50 to-yellow-50",
   },
 ];
@@ -35,13 +35,13 @@ const slides = [
 const Slider = () => {
   const [current, setCurrent] = useState(0);
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-  //   }, 3000);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+    }, 5000);
 
-  //   return () => clearInterval(interval);
-  // }, []);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="h-[calc(100vh-80px)] overflow-hidden my-4 ">
@@ -61,11 +61,11 @@ const Slider = () => {
               <h1 className="text-5xl lg:text-6xl 2xl:text-8xl font-semibold">
                 {slide.title}
               </h1>
-              <Link href={slide.url}>
+              <a href={slide.url}>
                 <button className="rounded-md bg-black text-white py-3 px-4 ">
                   SHOP NOW
                 </button>
-              </Link>
+              </a>
             </div>
 
             <div className="h-1/2 xl:w-1/2 xl:h-full relative">

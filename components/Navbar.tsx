@@ -25,7 +25,7 @@ const Navbar = () => {
             <div className="hidden lg:flex lg:w-2/3">
               <nav className="flex justify-evenly w-full">
                 <Link href="/">Home</Link>
-                <Link href="/products">Shop</Link>
+                <Link href="/product">Shop</Link>
                 <Link href="/about">About</Link>
                 <Link href="/contact">Contact</Link>
               </nav>
@@ -58,7 +58,7 @@ const Navbar = () => {
           {isActive ? (
             <nav className="flex flex-col absolute top-20 items-center gap-6 justify-center left-0 w-full h-screen bg-black text-white z-10">
               <Link href="/">Home</Link>
-              <Link href="/products">Shop</Link>
+              <Link href="/product">Shop</Link>
               <Link href="/about">About</Link>
               <Link href="/contact">Contact</Link>
             </nav>
