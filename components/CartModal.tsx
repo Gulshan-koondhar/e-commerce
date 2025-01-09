@@ -8,15 +8,17 @@ import {
 } from "@/components/ui/sheet";
 import { useShoppingCart } from "use-shopping-cart";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const CartModal = () => {
   const { cartCount, cartDetails, removeItem, totalPrice } = useShoppingCart();
+  const route = useRouter();
 
   return (
     <Sheet defaultOpen>
       <SheetContent className="sm:max-w-lg w-[90vw]">
         <SheetHeader>
-          <SheetTitle>Shopping Cart {cartCount} items</SheetTitle>
+          <SheetTitle>Shopping Cart </SheetTitle>
         </SheetHeader>
         <div className="h-full flex flex-col justify-between">
           <div className="mt-8 flex-1 overflow-y-auto">
@@ -43,7 +45,7 @@ const CartModal = () => {
                           <div>
                             <div className="flex justify-between text-base font-medium text-gray-900 gap-3">
                               <h3>{entry?.name || "No Title Available"}</h3>
-                              <p>{entry?.price * entry?.quantity}</p>
+                              <p>${entry?.price * entry?.quantity}</p>
                             </div>
                           </div>
                           <div className="flex justify-between mt-6">
@@ -60,12 +62,36 @@ const CartModal = () => {
               )}
             </ul>
           </div>
-          <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
-            <div className="flex justify-between font-medium text-gray-900 text-base">
-              <p>Subtotal</p>
-              <p>${totalPrice?.toFixed(0)}</p>
+          {cartCount !== 0 && (
+            <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
+              <div className="flex justify-between font-medium text-gray-900 text-base">
+                <p>Subtotal</p>
+                <p>${totalPrice?.toFixed(0)}</p>
+              </div>
+              <p className="mt-0.5 text-sm text-gray-500">
+                Shipping and taxes are calculated at checkout.{" "}
+              </p>
+              <div className="mt-6">
+                <button
+                  className="w-full"
+                  onClick={() => route.push("/checkout")}
+                >
+                  Checkout
+                </button>
+              </div>
+              <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
+                <p>
+                  OR{" "}
+                  <button
+                    className="font-medium"
+                    onClick={() => route.push("/product")}
+                  >
+                    Continue Shopping
+                  </button>
+                </p>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </SheetContent>
     </Sheet>

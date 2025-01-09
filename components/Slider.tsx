@@ -4,6 +4,8 @@ import Image from "next/image";
 
 import { useEffect, useState } from "react";
 import image from "@/assests/images/pexels-photo-1021693.jpeg";
+import image1 from "@/assests/images/photo-1613869810108-70f9fe0cdef5.avif";
+import image2 from "@/assests/images/premium_photo-1690406382707-16d9cc7a83d5.avif";
 
 const slides = [
   {
@@ -18,7 +20,7 @@ const slides = [
     id: 2,
     title: "Winter Sale Collections",
     description: "Sale! Up to 50% off!",
-    img: image,
+    img: image1,
     url: "/product",
     bg: "bg-gradient-to-r from-pink-50 to-blue-50",
   },
@@ -26,7 +28,7 @@ const slides = [
     id: 3,
     title: "Spring Sale Collections",
     description: "Sale! Up to 50% off!",
-    img: image,
+    img: image2,
     url: "/product",
     bg: "bg-gradient-to-r from-blue-50 to-yellow-50",
   },

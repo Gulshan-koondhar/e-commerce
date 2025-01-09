@@ -6,9 +6,9 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
     <USCProvider
       mode="payment"
       cartMode="client-only"
-      stripe={process.env.NEXT_PUBLIC_STRIPE_KEY as string}
-      successUrl="localhost:3000/success"
-      cancelUrl="localhost:3000/cancel"
+      stripe=""
+      successUrl=""
+      cancelUrl=""
       currency="USD"
       shouldPersist={true}
       language="en-US"
